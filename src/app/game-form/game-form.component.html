@@ -40,6 +40,11 @@
 <p>Form status: {{ gameForm.status | json }}</p>
 
 <form [formGroup]="gameForm">
+    <div class="form-group">
+        <label class="center-block">GAME:
+          <input class="form-control" formControlName="numgame">
+        </label>
+      </div>
   <div class="form-group">
     <label class="center-block">Name:
       <input class="form-control" formControlName="jugador">
