@@ -36,6 +36,31 @@
   </div>
 </form> -->
 
+
+<p>Form value: {{ gameTest.value | json }}</p>
+<p>Form status: {{ gameTest.status | json }}</p>
+
+
+<form [formGroup]="gameTest">
+  <div formArrayName="Game" class="well well-lg">
+    <div *ngFor="let game of Game.controls; let i=index" [formGroupName]="i">
+      <label class="center-block">Name:
+        <input class="form-control" formControlName="Jugador">
+      </label>
+      <div formArrayName="Manos" class="well well-lg">
+          <div *ngFor="let mano of Manos.controls; let i=index" [formGroupName]="i">
+              <label class="center-block">Numero de Juego:
+                  <input class="form-control" formControlName="NumMano">
+                </label>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</form>
+
+
+<!-- 
 <p>Form value: {{ gameForm.value | json }}</p>
 <p>Form status: {{ gameForm.status | json }}</p>
 
@@ -65,7 +90,12 @@
       </div>
     </div>
   </div>
-</form>
+</form> -->
+
+
+
+
+
 <!-- <div [hidden]="submitted">
 <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
   <label for="name">NumberGame</label>

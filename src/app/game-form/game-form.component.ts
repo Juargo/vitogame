@@ -11,11 +11,49 @@ import { shouldCallLifecycleInitHook } from '@angular/core/src/view';
 export class GameFormComponent implements OnInit {
 
   gameForm: FormGroup;
+  gameTest: FormGroup;
+
   constructor(private fb: FormBuilder) {
     this.createForm()
   }
 
   createForm() {
+    this.gameTest = this.fb.group({
+      Game: this.fb.array([
+        this.fb.group({
+          Jugador: 'Vito',
+          Manos:this.fb.array([
+            this.fb.group({
+              NumMano: 1,
+              Jugada: 2,
+              Resultado:3
+            }),
+            this.fb.group({
+              NumMano: 2,
+              Jugada: 5,
+              Resultado:12
+            })
+          ])
+        }),
+        this.fb.group({
+          Jugador: 'Perro',
+          Manos:this.fb.array([
+            this.fb.group({
+              NumMano: 1,
+              Jugada: 4,
+              Resultado:12
+            }),
+            this.fb.group({
+              NumMano: 2,
+              Jugada: 5,
+              Resultado:9
+            })
+          ])
+        })
+      ]) 
+    })
+
+
     this.gameForm = this.fb.group({
       numgame: [1, Validators.required],
       jugador: ['Vito', Validators.required],
@@ -48,8 +86,16 @@ export class GameFormComponent implements OnInit {
   }
 
   //metodo necesario para obtener los componentes del array del form y presentarlos en el for del formHtml
+  // get Manos(): FormArray {
+  //   return this.gameForm.get('Manos') as FormArray;
+  // }
+
   get Manos(): FormArray {
-    return this.gameForm.get('Manos') as FormArray;
+    return this.gameTest.controls[0].get('Manos') as FormArray;
+  }
+  
+  get Game(): FormArray {
+    return this.gameTest.get('Game') as FormArray;
   }
 
   // submitted = false;
@@ -71,6 +117,7 @@ export class GameFormComponent implements OnInit {
     // this.gameForm.setControl('Manos',manosArrayFrom)
     
     console.log(this.gameForm)
+    console.log(this.gameTest)
   }
 
   // newGame(){
