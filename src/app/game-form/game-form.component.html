@@ -40,18 +40,23 @@
 <p>Form value: {{ gameTest.value | json }}</p>
 <p>Form status: {{ gameTest.status | json }}</p>
 
-
 <form [formGroup]="gameTest">
   <div formArrayName="Game" class="well well-lg">
     <div *ngFor="let game of Game.controls; let i=index" [formGroupName]="i">
       <label class="center-block">Name:
-        <input class="form-control" formControlName="Jugador">
+        <p>{{ gameTest.value.Game[i].Jugador}}</p>
       </label>
       <div formArrayName="Manos" class="well well-lg">
-          <div *ngFor="let mano of Manos.controls; let i=index" [formGroupName]="i">
+          <div *ngFor="let mano of game.controls.Manos.controls; let j=index" [formGroupName]="i">
               <label class="center-block">Numero de Juego:
-                  <input class="form-control" formControlName="NumMano">
+                  <p>{{ gameTest.value.Game[i].Manos[j].NumMano}}</p>
                 </label>
+                <label class="center-block">Jugada:
+                    <input class="form-control" formControlName="Jugada">
+                  </label>
+                  <label class="center-block">resultado:
+                      <input class="form-control" formControlName="Resultado">
+                    </label>
           </div>
       </div>
 

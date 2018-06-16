@@ -90,10 +90,10 @@ export class GameFormComponent implements OnInit {
   //   return this.gameForm.get('Manos') as FormArray;
   // }
 
-  get Manos(): FormArray {
-    return this.gameTest.controls[0].get('Manos') as FormArray;
-  }
-  
+  // get Manos(): FormArray {
+  //   return this.gameTest.controls[0].get('Manos') as FormArray;
+  // }
+
   get Game(): FormArray {
     return this.gameTest.get('Game') as FormArray;
   }
