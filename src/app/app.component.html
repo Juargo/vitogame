@@ -1,41 +1,96 @@
-<!-- <div class="container">
-    <form class="form-inline">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">#Mano</th>
-                    <th scope="col">Vito</th>
-                    <th scope="col">Perro</th>
-                    <th scope="col">sadasad</th>
-                    <th scope="col">dddddd</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12,13,14]">
-                    <td scope="row" style="width: 33px;height: 41px;">{{item}}</td>
-                    <td style="width: 33px;height: 41px;">
-                        <input class="form-control inp"> -
-                        <input class="form-control inp">
-                    </td>
-                    <td style="width: 33px;height: 41px;">
-                        <input class="form-control inp"> -
-                        <input class="form-control inp">
-                    </td>
-                    <td style="width: 33px;height: 41px;">
-                        <input class="form-control inp"> -
-                        <input class="form-control inp">
-                    </td>
-                    <td style="width: 33px;height: 41px;">
-                        <input class="form-control inp"> -
-                        <input class="form-control inp">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </form>
+<section class="hero is-primary is-medium">
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <p class="title">Juargo</p>
+          <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item is-active">
+              Home
+            </a>
+            <a class="navbar-item">
+              Games
+            </a>
+            <a class="navbar-item">
+              Jugadores
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
 
-</div> -->
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        VITOGAME
+      </h1>
+      <h2 class="subtitle">
+        the best game in the world
+      </h2>
+      <nav class="level">
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">Games</p>
+              <p class="title">15</p>
+            </div>
+          </div>
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">Jugadores</p>
+              <p class="title">4</p>
+            </div>
+          </div>
+        </nav>
+    </div>
+  </div>
 
-<div class="container">
-    <app-game-form></app-game-form>
-</div>
+  <!-- Hero footer: will stick at the bottom -->
+  <div class="hero-foot">
+    <nav class="tabs">
+      <div class="container">
+        <ul>
+          <li class="is-active">
+            <a>Overview</a>
+          </li>
+          <li>
+            <a>Modifiers</a>
+          </li>
+          <li>
+            <a>Grid</a>
+          </li>
+          <li>
+            <a>Elements</a>
+          </li>
+          <li>
+            <a>Components</a>
+          </li>
+          <li>
+            <a>Layout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</section>
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Bulma</strong> by
+        <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed
+        <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,19 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { GameFormComponent } from './game-form/game-form.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    GameFormComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule,
-    FormsModule
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
