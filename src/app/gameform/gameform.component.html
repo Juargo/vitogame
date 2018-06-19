@@ -1,3 +1,56 @@
+<p>
+  Form value: {{ gameForm.value | json }}</p>
+<p>Form status: {{ gameForm.status | json }}</p>
+
+<form [formGroup]="gameForm">
+    <div formArrayName="Games" class="well well-lg">
+      <div *ngFor="let game of Games.controls; let i=index" [formGroupName]="i">
+        <label class="center-block">Name:
+          <p>{{ gameForm.value.Games[i].Jugador}}</p>
+        </label>
+        <div formArrayName="Manos" class="well well-lg">
+            <div *ngFor="let mano of game.controls.Manos.controls; let j=index" [formGroupName]="i">
+                <label class="center-block">Numero de Juego:
+                    <p>{{ gameForm.value.Games[i].Manos[j].NumMano}}</p>
+                  </label>
+                  <label class="center-block">Jugada:
+                      <input class="form-control" formControlName="Jugada">
+                    </label>
+                    <label class="center-block">resultado:
+                        <input class="form-control" formControlName="Resultado">
+                      </label>
+            </div>
+        </div>
+  
+      </div>
+    </div>
+  </form>
+  
+<!-- <form [formGroup]="gameForm">
+  <table formArrayName="Games" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <thead>
+      <tr>
+        <th scope="col" class="has-text-centered">#Mano</th>
+        <th scope="col" class="has-text-centered" [formGroupName]="i" *ngFor="let game of Games.controls;let i=index">
+          {{gameForm.value.Games[i].Jugador}}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12,13,14]">
+        <td scope="row" style="width: 33px;height: 41px;" class="has-text-centered">
+          {{item}}
+        </td>
+        <td *ngFor="let mano of Games.controls.Manos.controls; let j=index" [formGroupName]="i">
+          ggt
+        </td>    
+      </tr>
+    </tbody>
+
+  </table>
+</form> -->
+
+
 <form class="form-inline">
   <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
     <thead>
@@ -18,59 +71,59 @@
               <div class="control">
                 <input class="input is-small is-rounded" type="text" placeholder="Small input">
               </div>
-            </div> 
-           <span class="has-text-weight-bold" style="padding: 1px"> - </span> 
+            </div>
+            <span class="has-text-weight-bold" style="padding: 1px"> - </span>
             <div class="field">
-                <div class="control">
-                  <input class="input is-small is-rounded" type="text" placeholder="Small input">
-                </div>
+              <div class="control">
+                <input class="input is-small is-rounded" type="text" placeholder="Small input">
               </div>
+            </div>
           </div>
         </td>
         <td style="width: 33px;height: 41px;" class="has-text-centered">
-            <div class="field is-horizontal">
-                <div class="field">
-                  <div class="control">
-                    <input class="input is-small is-rounded" type="text" placeholder="Small input">
-                  </div>
-                </div> 
-               <span class="has-text-weight-bold" style="padding: 1px"> - </span> 
-                <div class="field">
-                    <div class="control">
-                      <input class="input is-small is-rounded" type="text" placeholder="Small input">
-                    </div>
-                  </div>
+          <div class="field is-horizontal">
+            <div class="field">
+              <div class="control">
+                <input class="input is-small is-rounded" type="text" placeholder="Small input">
               </div>
+            </div>
+            <span class="has-text-weight-bold" style="padding: 1px"> - </span>
+            <div class="field">
+              <div class="control">
+                <input class="input is-small is-rounded" type="text" placeholder="Small input">
+              </div>
+            </div>
+          </div>
         </td>
         <td style="width: 33px;height: 41px;" class="has-text-centered">
-            <div class="field is-horizontal">
-                <div class="field">
-                  <div class="control">
-                    <input class="input is-small is-rounded" type="text" placeholder="Small input">
-                  </div>
-                </div> 
-               <span class="has-text-weight-bold" style="padding: 1px"> - </span> 
-                <div class="field">
-                    <div class="control">
-                      <input class="input is-small is-rounded" type="text" placeholder="Small input">
-                    </div>
-                  </div>
+          <div class="field is-horizontal">
+            <div class="field">
+              <div class="control">
+                <input class="input is-small is-rounded" type="text" placeholder="Small input">
               </div>
+            </div>
+            <span class="has-text-weight-bold" style="padding: 1px"> - </span>
+            <div class="field">
+              <div class="control">
+                <input class="input is-small is-rounded" type="text" placeholder="Small input">
+              </div>
+            </div>
+          </div>
         </td>
         <td style="width: 33px;height: 41px;" class="has-text-centered" align="center">
-            <div class="field is-horizontal">
-                <div class="field">
-                  <div class="control">
-                    <input class="input is-small is-rounded" type="text" placeholder="Small input">
-                  </div>
-                </div> 
-               <span class="has-text-weight-bold" style="padding: 1px"> - </span> 
-                <div class="field">
-                    <div class="control">
-                      <input class="input is-small is-rounded" type="text" placeholder="Small input">
-                    </div>
-                  </div>
+          <div class="field is-horizontal">
+            <div class="field">
+              <div class="control">
+                <input class="input is-small is-rounded" type="text" placeholder="Small input">
               </div>
+            </div>
+            <span class="has-text-weight-bold" style="padding: 1px"> - </span>
+            <div class="field">
+              <div class="control">
+                <input class="input is-small is-rounded" type="text" placeholder="Small input">
+              </div>
+            </div>
+          </div>
         </td>
       </tr>
     </tbody>
