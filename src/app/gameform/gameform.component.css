@@ -1,3 +1,9 @@
 .field{
     width: 140px;
 }
+
+.numb{
+    margin-bottom: 9px;
+    border: solid 1px;
+    border-right: 0;
+}

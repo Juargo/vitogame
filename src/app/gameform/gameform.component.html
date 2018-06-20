@@ -1,8 +1,40 @@
+<div style="overflow: scroll;">
+  <form [formGroup]="gameForm">
+    <div class="columns is-gapless is-mobile" formArrayName="Games">
+      <div style="width: 52px">
+        <div class="has-text-centered" style="border: solid 1px;"> #</div>
+        <div *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12,13,14]" class="has-text-centered numb" > 
+          {{item}}
+        </div>
+      </div>
+      <div class="column has-text-centered" *ngFor="let game of Games.controls; let i=index" [formGroupName]="i" style="border: solid 1px">
+        <div style="border: solid 1px" class="has-text-weight-bold">{{ gameForm.value.Games[i].Jugador}}</div>
+        <div formArrayName="Manos">
+          <div *ngFor="let mano of game.controls.Manos.controls; let j=index" [formGroupName]="j" style="padding-left: 23px;border-bottom: solid 1px;padding-top: 3px;height: 35px;">
+            <div class="field is-horizontal ">
+              <div class="field ">
+                <div class="control">
+                  <input class="has-text-centered input is-small is-rounded" type="text" formControlName="Jugada">
+                </div>
+              </div>
+              <span class="has-text-weight-bold" style="padding: 1px"> - </span>
+              <div class="field">
+                <div class="control">
+                  <input class="has-text-centered input is-small is-rounded" type="text" formControlName="Resultado">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
 <p>
   Form value: {{ gameForm.value | json }}</p>
 <p>Form status: {{ gameForm.status | json }}</p>
 
-<form [formGroup]="gameForm">
+<!-- <form [formGroup]="gameForm">
     <div formArrayName="Games" class="well well-lg">
       <div *ngFor="let game of Games.controls; let i=index" [formGroupName]="i">
         <label class="center-block">Name:
@@ -24,8 +56,8 @@
   
       </div>
     </div>
-  </form>
-  
+  </form> -->
+
 <!-- <form [formGroup]="gameForm">
   <table formArrayName="Games" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
     <thead>
@@ -49,7 +81,7 @@
 
   </table>
 </form> -->
-
+<!-- 
 
 <form class="form-inline">
   <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
@@ -128,4 +160,4 @@
       </tr>
     </tbody>
   </table>
-</form>
+</form> -->
