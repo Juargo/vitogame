@@ -1,26 +1,50 @@
+<nav class="level">
+    <p class="level-item has-text-centered">
+    </p>
+    <p class="level-item has-text-centered">
+    </p>
+    <p class="level-item has-text-centered is-uppercase has-text-weight-bold numbergame">
+      Game N° {{datagameActual.juegoactual}}
+    </p>
+    <p class="level-item has-text-centered">
+    </p>
+    <p class="level-item has-text-centered">
+    </p>
+  </nav>
+  
 <div style="overflow: scroll;">
-  <form [formGroup]="gameForm">
+  <form [formGroup]="gameForm" (ngSubmit)="onFormSubmit()" >
+      <div class="field has-addons">
+          <p class="control">
+            <button type="submit" [disabled] = "!gameForm.valid" class="button is-link is-rounded">
+              <span class="icon is-small">
+                <i class="fas fa-save"></i>
+              </span>
+              <span>Guardar</span>  
+            </button>
+          </p>
+          </div>
     <div class="columns is-gapless is-mobile" formArrayName="Games">
-      <div style="width: 52px">
-        <div class="has-text-centered" style="border: solid 1px;"> #</div>
+      <div id="numgamecontainer">
+        <div class="has-text-centered numb"> #</div>
         <div *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12,13,14]" class="has-text-centered numb" > 
           {{item}}
         </div>
       </div>
-      <div class="column has-text-centered" *ngFor="let game of Games.controls; let i=index" [formGroupName]="i" style="border: solid 1px">
-        <div style="border: solid 1px" class="has-text-weight-bold">{{ gameForm.value.Games[i].Jugador}}</div>
+      <div class="column has-text-centered" *ngFor="let game of Games.controls; let i=index" [formGroupName]="i" id="datagamecontainer">
+        <div  class="has-text-weight-bold thnames">{{ gameForm.value.Games[i].Jugador}}</div>
         <div formArrayName="Manos">
-          <div *ngFor="let mano of game.controls.Manos.controls; let j=index" [formGroupName]="j" style="padding-left: 23px;border-bottom: solid 1px;padding-top: 3px;height: 35px;">
+          <div *ngFor="let mano of game.controls.Manos.controls; let j=index" [formGroupName]="j" class="tddata">
             <div class="field is-horizontal ">
               <div class="field ">
                 <div class="control">
-                  <input class="has-text-centered input is-small is-rounded" type="text" formControlName="Jugada">
+                  <input class="has-text-centered input is-small" type="text" formControlName="Jugada" >
                 </div>
               </div>
               <span class="has-text-weight-bold" style="padding: 1px"> - </span>
               <div class="field">
                 <div class="control">
-                  <input class="has-text-centered input is-small is-rounded" type="text" formControlName="Resultado">
+                  <input class="has-text-centered input is-small " type="text" formControlName="Resultado">
                 </div>
               </div>
             </div>
@@ -33,131 +57,3 @@
 <p>
   Form value: {{ gameForm.value | json }}</p>
 <p>Form status: {{ gameForm.status | json }}</p>
-
-<!-- <form [formGroup]="gameForm">
-    <div formArrayName="Games" class="well well-lg">
-      <div *ngFor="let game of Games.controls; let i=index" [formGroupName]="i">
-        <label class="center-block">Name:
-          <p>{{ gameForm.value.Games[i].Jugador}}</p>
-        </label>
-        <div formArrayName="Manos" class="well well-lg">
-            <div *ngFor="let mano of game.controls.Manos.controls; let j=index" [formGroupName]="i">
-                <label class="center-block">Numero de Juego:
-                    <p>{{ gameForm.value.Games[i].Manos[j].NumMano}}</p>
-                  </label>
-                  <label class="center-block">Jugada:
-                      <input class="form-control" formControlName="Jugada">
-                    </label>
-                    <label class="center-block">resultado:
-                        <input class="form-control" formControlName="Resultado">
-                      </label>
-            </div>
-        </div>
-  
-      </div>
-    </div>
-  </form> -->
-
-<!-- <form [formGroup]="gameForm">
-  <table formArrayName="Games" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-    <thead>
-      <tr>
-        <th scope="col" class="has-text-centered">#Mano</th>
-        <th scope="col" class="has-text-centered" [formGroupName]="i" *ngFor="let game of Games.controls;let i=index">
-          {{gameForm.value.Games[i].Jugador}}
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12,13,14]">
-        <td scope="row" style="width: 33px;height: 41px;" class="has-text-centered">
-          {{item}}
-        </td>
-        <td *ngFor="let mano of Games.controls.Manos.controls; let j=index" [formGroupName]="i">
-          ggt
-        </td>    
-      </tr>
-    </tbody>
-
-  </table>
-</form> -->
-<!-- 
-
-<form class="form-inline">
-  <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-    <thead>
-      <tr>
-        <th scope="col" class="has-text-centered">#Mano</th>
-        <th scope="col" class="has-text-centered">Vito</th>
-        <th scope="col" class="has-text-centered">Perro</th>
-        <th scope="col" class="has-text-centered">sadasad</th>
-        <th scope="col" class="has-text-centered">dddddd</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12,13,14]">
-        <td scope="row" style="width: 33px;height: 41px;" class="has-text-centered">{{item}}</td>
-        <td style="width: 33px;height: 41px;" class="has-text-centered">
-          <div class="field is-horizontal">
-            <div class="field">
-              <div class="control">
-                <input class="input is-small is-rounded" type="text" placeholder="Small input">
-              </div>
-            </div>
-            <span class="has-text-weight-bold" style="padding: 1px"> - </span>
-            <div class="field">
-              <div class="control">
-                <input class="input is-small is-rounded" type="text" placeholder="Small input">
-              </div>
-            </div>
-          </div>
-        </td>
-        <td style="width: 33px;height: 41px;" class="has-text-centered">
-          <div class="field is-horizontal">
-            <div class="field">
-              <div class="control">
-                <input class="input is-small is-rounded" type="text" placeholder="Small input">
-              </div>
-            </div>
-            <span class="has-text-weight-bold" style="padding: 1px"> - </span>
-            <div class="field">
-              <div class="control">
-                <input class="input is-small is-rounded" type="text" placeholder="Small input">
-              </div>
-            </div>
-          </div>
-        </td>
-        <td style="width: 33px;height: 41px;" class="has-text-centered">
-          <div class="field is-horizontal">
-            <div class="field">
-              <div class="control">
-                <input class="input is-small is-rounded" type="text" placeholder="Small input">
-              </div>
-            </div>
-            <span class="has-text-weight-bold" style="padding: 1px"> - </span>
-            <div class="field">
-              <div class="control">
-                <input class="input is-small is-rounded" type="text" placeholder="Small input">
-              </div>
-            </div>
-          </div>
-        </td>
-        <td style="width: 33px;height: 41px;" class="has-text-centered" align="center">
-          <div class="field is-horizontal">
-            <div class="field">
-              <div class="control">
-                <input class="input is-small is-rounded" type="text" placeholder="Small input">
-              </div>
-            </div>
-            <span class="has-text-weight-bold" style="padding: 1px"> - </span>
-            <div class="field">
-              <div class="control">
-                <input class="input is-small is-rounded" type="text" placeholder="Small input">
-              </div>
-            </div>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</form> -->

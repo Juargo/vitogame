@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { GameServiceService } from '../game-service.service'
 
 @Component({
   selector: 'app-gameform',
@@ -10,10 +11,14 @@ import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@ang
 export class GameformComponent implements OnInit {
 
   public players = ['Vito', 'Perro', 'Carlos', 'Seba', 'Sisi'];
+  public datagameActual;
 
   gameForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder, 
+    private router: Router,
+    private _gameService: GameServiceService) {
     this.createForm()
   }
 
@@ -47,7 +52,19 @@ export class GameformComponent implements OnInit {
     return this.gameForm.get('Games') as FormArray;
   }
   ngOnInit() {
-    console.log(this.gameForm)
+    console.log(this.gameForm);
+    this._gameService.getGameActual()
+    .subscribe(data => this.datagameActual = data)
+  }
+
+  onFormSubmit() {
+    console.log("holi")
+    if (this.gameForm.valid) {
+      let user = this.gameForm.value;
+      console.log(user);
+      this.router.navigate(['/'])
+      /* Any API call logic via services goes here */
+    }
   }
 
 }

@@ -2,8 +2,32 @@
     width: 140px;
 }
 
+#numgamecontainer{
+    width: 50px;
+}
 .numb{
+    background-color: #00b89c;
     margin-bottom: 9px;
     border: solid 1px;
     border-right: 0;
+    /* font-weight: bold */
+}
+
+#dataganecontainer{
+    border:solid 0px;
+}
+.thnames{
+    border: 1px solid;
+    background-color: #00b89c;
+    width: 212px;
+    margin-left: 2px
+}
+.tddata{
+    border-bottom: solid 1px;
+    height: 35px;
+    padding: 4px 17%;
+}
+.numbergame{
+    font-size: 29px;
+    color: #565656;
 }
